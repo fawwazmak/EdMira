@@ -22,7 +22,7 @@ const HeroSection = () => {
             transition={{ duration: 1.2 }}
             className="text-4xl md:text-6xl font-bold leading-tight text-[#082E39]"
         >
-            Empowering <span className="text-[#CBA244]">Africa’s Future Doctors</span>
+            Empowering <span className="text-[#CBA244]">Africa’s Future Medical Practitioners
         </motion.h1>
 
         <motion.p
