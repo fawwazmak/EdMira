@@ -149,7 +149,7 @@ const AboutSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl md:text-start text-center font-semibold text-[#082E39] mb-4">
+        <h2 className="text-3xl md:text-4xl text-center font-semibold text-[#082E39] mb-4">
           What <span className="text-[#CBA244]">We Are</span>
         </h2>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto md:text-start text-center">
