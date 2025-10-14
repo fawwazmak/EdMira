@@ -34,7 +34,7 @@ const AboutSection = () => {
   return (
     <section className="w-full bg-[#FDFDFD] py-20 px-6 md:px-16">
       {/* About Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
+      <div className="flex flex-col-reverse md:text-start text-center md:flex-row items-center justify-between gap-12 mb-24">
         {/* Text */}
         <motion.div
           className="w-full md:w-1/2 space-y-6"
@@ -82,7 +82,7 @@ const AboutSection = () => {
       </div>
 
       {/* Mission & Vision Section */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 mb-24">
+      <div className="flex flex-col-reverse md:text-start text-center md:flex-row items-center justify-between gap-12 mb-24">
         {/* Image */}
         <motion.img
           src="/mission.jpg"
@@ -149,10 +149,10 @@ const AboutSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#082E39] mb-4">
+        <h2 className="text-3xl md:text-4xl md:text-start text-center font-semibold text-[#082E39] mb-4">
           What <span className="text-[#CBA244]">We Are</span>
         </h2>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto md:text-start text-center">
           EdMira is a comprehensive digital ecosystem built to address the real
           challenges of medical education in Africa. From localized curriculum content
           to mentorship, we deliver inclusive, flexible, and impactful learning for the
@@ -164,7 +164,7 @@ const AboutSection = () => {
         {whatWeAre.map((item, index) => (
           <motion.div
             key={index}
-            className="bg-white p-8 border-b-6 border-[#d98021] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="bg-white md:text-start text-center md:p-8 p-2 border-b-6 border-[#d98021] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
