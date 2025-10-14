@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RiWhatsappLine } from "react-icons/ri";
+import { RiWhatsappLine, RiLinkedinFill, RiTwitterXLine, RiInstagramLine } from "react-icons/ri";
+import { FaFacebookF } from "react-icons/fa";
+
 
 
 const Footer = () => {
@@ -12,11 +14,9 @@ const Footer = () => {
               <img
                 src="/Logo1.jpg"
                 alt="Logo"
-                width={64}
-                height={64}
-                className="rounded-full border-2 border-[#CBA244] md:mx-0 mx-auto"
+                className="rounded-full h-20 w-20 border-2 border-[#CBA244] md:mx-0 mx-auto"
               />
-              <p className="text-sm text-[#C7BC9A] font-medium">
+              <p className="text-sm text-[#C7BC9A] sm:text-start text-center font-medium">
                 Empowering Africa’s Medical practicioners
               </p>
             </section>
@@ -36,13 +36,13 @@ const Footer = () => {
               <h3 className="text-lg font-semibold text-[#CBA244] md:text-start text-center">Get In Touch</h3>
               <div className="flex flex-col md:flex-row gap-3">
                 <button
-                  onClick={() => window.open("https://wa.me/8032877945", "_blank")}
+                  onClick={() => window.open("https://wa.me/+2348032877945", "_blank")}
                   className="bg-gradient-to-r from-[#D98021] to-[#CBA244] text-[#082E39] font-semibold px-5 py-3 rounded-full hover:scale-105 transition-transform"
                 >
                   Chat on WhatsApp
                 </button>
                 <button
-                  onClick={() => (window.location.href = "mailto:contact@edmira.org")}
+                  onClick={() => (window.location.href = "mailto:edmiraltd@gmail.com")}
                   className="border border-[#CBA244] text-[#CBA244] font-semibold px-5 py-3 rounded-full hover:bg-[#CBA244] hover:text-[#082E39] transition-all"
                 >
                   Chat via Email
@@ -66,33 +66,29 @@ const Footer = () => {
               <div>
                 <h3 className="text-lg font-semibold text-[#CBA244] md:text-start text-center">Follow Us</h3>
 
-                <div className="flex md:space-x-5 md:justify-start justify-between text-2xl mt-4">
-                  <i
-                    className="fa-brands fa-whatsapp hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
-                    onClick={() => window.open("https://wa.me/8032877945", "_blank")}
-                  ></i>
-                  <RiWhatsappLine className="hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
-                    onClick={() => window.open("https://wa.me/8032877945", "_blank")} />
-                    {/* Social Media Icons */}
-                  <i
-                    className="fa-brands fa-linkedin hover:text-[#0077B5] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
+                <div className="flex md:space-x-5 md:justify-start justify-between md:flex-no-wrap flex-wrap text-2xl mt-4">
+                  <RiWhatsappLine
+                    className="hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
+                    onClick={() => window.open("https://wa.me/+2348032877945", "_blank")}
+                  />
+                  <RiLinkedinFill
+                    className="hover:text-[#0077B5] transition-transform transform hover:scale-110 cursor-pointer bg-[#0077B5]/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
                     onClick={() => window.open("https://www.linkedin.com/in/edmiragroup", "_blank")}
-                  ></i>
-                  <i
-                    className="fa-brands fa-x-twitter hover:text-gray-300 transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
+                  />
+                  <RiTwitterXLine
+                    className="hover:text-gray-300 transition-transform transform hover:scale-110 cursor-pointer bg-gray-300/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
                     onClick={() => window.open("https://x.com/edmira_group", "_blank")}
-                  ></i>
-                  <i
-                    className="fa-brands fa-instagram hover:text-[#E4405F] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
+                  />
+                  <RiInstagramLine
+                    className="hover:text-[#E4405F] transition-transform transform hover:scale-110 cursor-pointer bg-[#E4405F]/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
                     onClick={() => window.open("https://www.instagram.com/edmira_group", "_blank")}
-                  ></i>
-                  <i
-                    className="fa-brands fa-facebook hover:text-[#1877F2] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 hover:translate-y-[-2px] duration-700 rounded-full"
-                    onClick={() =>
-                      window.open("https://web.facebook.com/profile.php?id=61581985767152", "_blank")
-                    }
-                  ></i>
+                  />
+                  <FaFacebookF
+                    className="hover:text-[#1877F2] transition-transform transform hover:scale-110 cursor-pointer bg-[#1877F2]/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
+                    onClick={() => window.open("https://web.facebook.com/profile.php?id=61581985767152", "_blank")}
+                  />
                 </div>
+
               </div>
             </section>
           </div>

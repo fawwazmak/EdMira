@@ -227,7 +227,7 @@ const ForumSection = () => {
             </motion.h1>
 
               
-            <Grid container spacing={12} sx={{ px: 4 }}>
+            <Grid container spacing={12} className="sm:p-4 sm:items-start items-center" >
               {teamMembers.map((member, idx) => (
                 <Grid item xs={12} lg={6} key={member.name}>
                   <motion.div
@@ -236,7 +236,7 @@ const ForumSection = () => {
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05 }}
-                    className="rounded-3xl md:p-12 p-4 text-center"
+                    className="rounded-3xl md:p-12 min-[309px]:p-4 text-center"
                     style={{
                       background: member.bgGradient,
                       backdropFilter: "blur(10px)",

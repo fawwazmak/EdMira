@@ -13,7 +13,7 @@ const HeroSection = () => {
 
     
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-16 md:py-24 bg-gradient-to-r from-[#F0F0EF] via-[#FDFDFD] to-[#C7BC9A] overflow-hidden">
+    <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-24 bg-gradient-to-r from-[#F0F0EF] via-[#FDFDFD] to-[#C7BC9A] overflow-hidden">
         {/* Left Side Content */}
         <div className="flex-1 text-center md:text-left space-y-6 z-10">
         <motion.h1
@@ -22,7 +22,7 @@ const HeroSection = () => {
             transition={{ duration: 1.2 }}
             className="text-4xl md:text-6xl font-bold leading-tight text-[#082E39]"
         >
-            Empowering <span className="text-[#CBA244]">Africa’s Future Medical Practitioners
+            Empowering <span className="text-[#CBA244]">Africa’s Future Medical Practitioners</span>
         </motion.h1>
 
         <motion.p

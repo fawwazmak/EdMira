@@ -143,7 +143,6 @@ const Navbar = () => {
                 variant="outlined"
                 onClick={handleLoginClick}
                 sx={{
-                width: "60%",
                 textTransform: "none",
                 borderRadius: "1rem",
                 borderColor: "#CBA244",
@@ -161,7 +160,6 @@ const Navbar = () => {
                 variant="contained"
                 onClick={handleLoginClick}
                 sx={{
-                    width: "60%",
                     textTransform: "none",
                     borderRadius: "1rem",
                     backgroundColor: "#D98021",
