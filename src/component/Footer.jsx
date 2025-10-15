@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm, ValidationError } from '@formspree/react';
 import { RiWhatsappLine, RiLinkedinFill, RiTwitterXLine, RiInstagramLine } from "react-icons/ri";
-import { FaFacebookF, FaArrowRight } from "react-icons/fa";
-
-
+import { FaFacebookF, FaArrowRight, FaSpinner } from "react-icons/fa";
 
 const Footer = () => {
+  const [state, handleSubmit] = useForm("xnnglgvv");
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    
+    // Check local storage for existing email
+    const existingEmails = JSON.parse(localStorage.getItem("subscribedEmails")) || [];
+    if (existingEmails.includes(email)) {
+      alert("This email is already subscribed!");
+      return;
+    }
+
+    // Submit to Formspree using their handleSubmit
+    await handleSubmit(e);
+    
+    // If submission was successful, clear the input and update local storage
+    if (state.succeeded) {
+      existingEmails.push(email);
+      localStorage.setItem("subscribedEmails", JSON.stringify(existingEmails));
+      alert("Thanks for subscribing!");
+      setEmail(''); // Clear the input field
+    }
+  };
+
   return (
     <footer className="bg-[#082E39] text-[#FDFDFD] py-12 px-6 md:px-16">
       <div className="flex flex-col md:flex-row md:justify-between md:items-start items-center md:gap-0 gap-10">
@@ -17,18 +41,18 @@ const Footer = () => {
             className="rounded-full h-20 w-20 border-2 border-[#CBA244]"
           />
           <p className="text-sm text-[#C7BC9A] sm:text-start text-center font-medium">
-            Empowering Africa’s Medical practicioners
+            Empowering Africa's Medical practicioners
           </p>
         </section>
 
         {/* Navigation Links */}
         <section className="flex flex-col space-y-3 md:w-fit w-full md:items-start items-center">
           <h3 className="text-lg font-semibold text-[#CBA244]">Quick Links</h3>
-          <Link href="#" className="hover:text-[#D98021] transition-colors">Home</Link>
-          <Link href="#" className="hover:text-[#D98021] transition-colors">About</Link>
-          <Link href="#" className="hover:text-[#D98021] transition-colors">Forum</Link>
-          <Link href="#" className="hover:text-[#D98021] transition-colors">News Feed</Link>
-          <Link href="#" className="hover:text-[#D98021] transition-colors">Privacy</Link>
+          <Link to="/" className="hover:text-[#D98021] transition-colors">Home</Link>
+          <Link to="/about" className="hover:text-[#D98021] transition-colors">About</Link>
+          <Link to="/forum" className="hover:text-[#D98021] transition-colors">Forum</Link>
+          <Link to="/news" className="hover:text-[#D98021] transition-colors">News Feed</Link>
+          <Link to="/privacy" className="hover:text-[#D98021] transition-colors">Privacy</Link>
         </section>
 
         {/* Contact & Subscribe */}
@@ -49,28 +73,68 @@ const Footer = () => {
             </button>
           </div>
 
+          {/* Subscribe Section */}
           <div className="mt-4">
-            <h4 className="text-lg md:text-start text-center font-semibold text-[#CBA244] mb-3">Subscribe</h4>
-            <div className="flex flex-row items-center bg-[#F0F0EF] rounded-full mx-w-full">
+            <h4 className="text-lg md:text-start text-center font-semibold text-[#CBA244] mb-3">
+              Subscribe
+            </h4>
+            <form onSubmit={handleSubscribe} className="flex flex-row items-center bg-[#F0F0EF] rounded-full mx-w-full">
               <input
                 type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-1 min-w-[328px]:px-4 px-1 py-2 text-[#082E39] focus:outline-none"
+                required
+                className="flex-1 px-4 py-2 text-[#082E39] focus:outline-none rounded-l-full"
               />
-              <button className="bg-[#D98021] md:block hidden text-[#FDFDFD] px-5 py-2 rounded-r-full rounded-l-none rounded-br-full w-fit hover:bg-[#CBA244] transition-colors">
-                Subscribe
+              <ValidationError 
+                prefix="Email" 
+                field="email" 
+                errors={state.errors} 
+              />
+
+              {/* Desktop Button */}
+              <button
+                type="submit"
+                disabled={state.submitting}
+                className="bg-[#D98021] cursor-pointer md:flex hidden items-center justify-center text-[#FDFDFD] px-5 py-2 rounded-r-full hover:bg-[#CBA244] transition-colors min-w-[100px] disabled:opacity-50"
+              >
+                {state.submitting ? (
+                  <FaSpinner className="animate-spin" />
+                ) : (
+                  "Subscribe"
+                )}
               </button>
 
-              <button className="bg-[#D98021] md:hidden text-[#FDFDFD] min-w-[328px]:px-5 px-1 py-3 rounded-r-full rounded-l-none rounded-br-full w-fit h-full hover:bg-[#CBA244] transition-colors">
-                <FaArrowRight />
+              {/* Mobile Button */}
+              <button
+                type="submit"
+                disabled={state.submitting}
+                className="bg-[#D98021] cursor-pointer md:hidden flex items-center justify-center text-[#FDFDFD] px-5 py-3 rounded-r-full hover:bg-[#CBA244] transition-colors min-w-[50px] disabled:opacity-50"
+              >
+                {state.submitting ? (
+                  <FaSpinner className="animate-spin" />
+                ) : (
+                  <FaArrowRight />
+                )}
               </button>
-            </div>
+            </form>
+            
+            {/* Success Message */}
+            {state.succeeded && (
+              <p className="text-green-400 text-sm mt-2 text-center md:text-left">
+                Thank you for subscribing!
+              </p>
+            )}
           </div>
 
+          {/* Social Icons */}
           <div>
-            <h3 className="text-lg font-semibold text-[#CBA244] md:text-start text-center">Follow Us</h3>
-
-            <div className="flex md:space-x-5 space-x-2 md:justify-start justify-center md:flex-no-wrap flex-wrap text-2xl mt-4">
+            <h3 className="text-lg font-semibold text-[#CBA244] md:text-start text-center">
+              Follow Us
+            </h3>
+            <div className="flex md:space-x-5 space-x-2 md:justify-start justify-center flex-wrap text-2xl mt-4">
               <RiWhatsappLine
                 className="hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer bg-[#25D366]/10 p-3 text-5xl hover:translate-y-[-2px] duration-700 rounded-full"
                 onClick={() => window.open("https://wa.me/+2348032877945", "_blank")}
@@ -92,17 +156,17 @@ const Footer = () => {
                 onClick={() => window.open("https://web.facebook.com/profile.php?id=61581985767152", "_blank")}
               />
             </div>
-
           </div>
         </section>
       </div>
 
+      {/* Footer bottom text */}
       <div className="mt-10 border-t border-[#CBA244]/30 pt-6 text-center text-sm text-[#C7BC9A]">
         &copy; {new Date().getFullYear()}{" "}
         <span className="text-[#CBA244] font-semibold">EdMira</span>. All rights reserved.
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
