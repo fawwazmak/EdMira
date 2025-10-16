@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@mui/material';
+import DevelopmentPopup from '../DevelopmentModal'; 
 
 const AboutSection = () => {
-  // ✅ Moved here — easier to manage and edit later
+  const [showDevPopup, setShowDevPopup] = useState(false);
+  
+  const handleGetStartedClick = () => {
+      setShowDevPopup(true);
+  };
+
+  const handleClosePopup = () => {
+      setShowDevPopup(false);
+  };
+  
+
   const whatWeAre = [
     {
       title: "Localized Curriculum Content",
@@ -56,6 +67,7 @@ const AboutSection = () => {
 
           <Button
             variant="contained"
+            onClick={handleGetStartedClick}
             sx={{
               backgroundColor: "#082E39",
               borderRadius: "1rem",
@@ -127,6 +139,7 @@ const AboutSection = () => {
 
           <Button
             variant="contained"
+            onClick={handleGetStartedClick}
             sx={{
               backgroundColor: "#D98021",
               borderRadius: "1rem",
@@ -177,6 +190,12 @@ const AboutSection = () => {
           </motion.div>
         ))}
       </div>
+
+
+      <DevelopmentPopup 
+        open={showDevPopup} 
+        onClose={handleClosePopup} 
+      />
     </section>
   );
 };

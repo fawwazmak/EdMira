@@ -1,31 +1,38 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import LogIn from './pages/LogIn';
-import SignUp from './pages/SignUp';
+import Auth from './component/Auth';
 import './App.css'
 import Navbar from './component/Navbar';
 import Footer from './component/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+function AppContent() {
+  const location = useLocation();
+  
+  // Define routes where Navbar and Footer should NOT show
+  const hideNavbarFooterRoutes = ['/login', '/signup'];
+  const shouldShowNavbarFooter = !hideNavbarFooterRoutes.includes(location.pathname);
 
   return (
-    <BrowserRouter>
-      <Navbar />
-
-      {/* Routes */}
+    <>
+      {shouldShowNavbarFooter && <Navbar />}
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route path="/contact" element={<Contact />} /> */}
+        <Route path="/login" element={<Auth key="login" />} />
+        <Route path="/signup" element={<Auth key="signup" />} />
       </Routes>
-
-      <Footer />
-    </BrowserRouter>
-  )
+      
+      {shouldShowNavbarFooter && <Footer />}
+    </>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
+
+export default App;
