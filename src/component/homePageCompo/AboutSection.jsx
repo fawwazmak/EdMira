@@ -43,7 +43,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="w-full bg-[#FDFDFD] py-20 px-6 md:px-16">
+    <section id='about' className="w-full bg-[#FDFDFD] py-20 px-6 md:px-16">
       {/* About Section */}
       <div className="flex flex-col-reverse md:text-start text-center md:flex-row items-center justify-between gap-12 mb-24">
         {/* Text */}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm, ValidationError } from '@formspree/react';
 import { RiWhatsappLine, RiLinkedinFill, RiTwitterXLine, RiInstagramLine } from "react-icons/ri";
 import { FaFacebookF, FaArrowRight, FaSpinner, FaCheckCircle } from "react-icons/fa";
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
   const [state, handleSubmit] = useForm("xnnglgvv");
@@ -52,6 +53,12 @@ const Footer = () => {
     }
   };
 
+  const scrollWithOffset = (el) => {
+    const yOffset = -80; // Adjust this value based on your navbar height
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-[#082E39] text-[#FDFDFD] py-12 px-6 md:px-16">
       <div className="flex flex-col md:flex-row md:justify-between md:items-start items-center md:gap-0 gap-10">
@@ -70,11 +77,11 @@ const Footer = () => {
         {/* Navigation Links */}
         <section className="flex flex-col space-y-3 md:w-fit w-full md:items-start items-center">
           <h3 className="text-lg font-semibold text-[#CBA244]">Quick Links</h3>
-          <Link to="/" className="hover:text-[#D98021] transition-colors">Home</Link>
-          <Link to="/about" className="hover:text-[#D98021] transition-colors">About</Link>
-          <Link to="/forum" className="hover:text-[#D98021] transition-colors">Forum</Link>
-          <Link to="/news" className="hover:text-[#D98021] transition-colors">News Feed</Link>
-          <Link to="/privacy" className="hover:text-[#D98021] transition-colors">Privacy</Link>
+          <HashLink to="/#home" scroll={scrollWithOffset} className="hover:text-[#D98021] transition-colors">Home</HashLink>
+          <HashLink to="/#about" scroll={scrollWithOffset} className="hover:text-[#D98021] transition-colors">About</HashLink>
+          <HashLink to="/#forum" scroll={scrollWithOffset} className="hover:text-[#D98021] transition-colors">Forum</HashLink>
+          <HashLink to="/#" scroll={scrollWithOffset} className="hover:text-[#D98021] transition-colors">News Feed</HashLink>
+          <HashLink to="/#" scroll={scrollWithOffset} className="hover:text-[#D98021] transition-colors">Privacy</HashLink>
         </section>
 
         {/* Contact & Subscribe */}

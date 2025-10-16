@@ -191,244 +191,210 @@ const Auth = () => {
   };
 
   return (
-    <Container 
-      component="main" 
-      maxWidth={isLogin ? "sm" : "md"}
-      sx={{ 
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        py: 4,
-        background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.darkTeal}E6 100%)`
-      }}
-    >
-      <Paper
-        elevation={16}
-        sx={{
-          padding: { xs: 4, md: 6 },
-          borderRadius: 4,
-          width: '100%',
-          background: colors.white,
-          border: `2px solid ${colors.gold}20`,
-          boxShadow: `0 20px 40px ${colors.darkTeal}40`
+    <section style={{ background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.darkTeal}E6 100%)`}}>
+      <Container 
+        component="main" 
+        maxWidth={isLogin ? "sm" : "md"}
+        sx={{ 
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          py: 4,
         }}
       >
-        {/* Header */}
-        <Box textAlign="center" mb={4}>
-          <Typography 
-            variant="h4" 
-            component="h1" 
-            fontWeight="bold" 
-            gutterBottom
-            sx={{ 
-              fontSize: { xs: '1.75rem', md: '2.125rem' },
-              background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-          >
-            {isLogin ? "Welcome Back to EdMira" : "Join EdMira Community"}
-          </Typography>
-          <Typography variant="body1" color={colors.darkTeal} sx={{ opacity: 0.8 }}>
-            {isLogin 
-              ? "Sign in to continue your medical journey" 
-              : "Create your professional account to empower Africa's medical practitioners"
-            }
-          </Typography>
-        </Box>
-
-        {/* Alert */}
-        {alert.show && (
-          <Alert 
-            severity={alert.severity} 
-            sx={{ 
-              mb: 3,
-              borderRadius: 2,
-              backgroundColor: alert.severity === 'success' ? `${colors.gold}15` : undefined,
-              color: colors.darkTeal
-            }}
-          >
-            {alert.message}
-          </Alert>
-        )}
-
-        {/* Form */}
-        <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            
-            {/* Personal Information Section - Only for Signup */}
-            {!isLogin && (
-              <>
-                <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
-                  Personal Information
-                </Typography>
-                
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <TextField
-                      label="First Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                      value={form.firstName}
-                      onChange={(e) => handleFormChange('firstName', e.target.value)}
-                      error={!!errors.firstName}
-                      helperText={errors.firstName}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Person sx={{ color: colors.gold }} />
-                          </InputAdornment>
-                        ),
-                      }}
-                      sx={inputStyles}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <TextField
-                      label="Last Name"
-                      variant="outlined"
-                      fullWidth
-                      required
-                      value={form.lastName}
-                      onChange={(e) => handleFormChange('lastName', e.target.value)}
-                      error={!!errors.lastName}
-                      helperText={errors.lastName}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Person sx={{ color: colors.gold }} />
-                          </InputAdornment>
-                        ),
-                      }}
-                      sx={inputStyles}
-                    />
-                  </Grid>
-                </Grid>
-              </>
-            )}
-
-            {/* Email Field */}
-            <TextField
-              label="Email Address"
-              variant="outlined"
-              fullWidth
-              required
-              value={form.email}
-              onChange={(e) => handleFormChange('email', e.target.value)}
-              error={!!errors.email}
-              helperText={errors.email}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Email sx={{ color: colors.gold }} />
-                  </InputAdornment>
-                ),
+        <Paper
+          elevation={16}
+          sx={{
+            padding: { xs: 4, md: 6 },
+            borderRadius: 4,
+            width: '100%',
+            background: colors.white,
+            border: `2px solid ${colors.gold}20`,
+            boxShadow: `0 20px 40px ${colors.darkTeal}40`
+          }}
+        >
+          {/* Header */}
+          <Box textAlign="center" mb={4}>
+            <Typography 
+              variant="h4" 
+              component="h1" 
+              fontWeight="bold" 
+              gutterBottom
+              sx={{ 
+                fontSize: { xs: '1.75rem', md: '2.125rem' },
+                background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
               }}
-              sx={inputStyles}
-            />
+            >
+              {isLogin ? "Welcome Back to EdMira" : "Join EdMira Community"}
+            </Typography>
+            <Typography variant="body1" color={colors.darkTeal} sx={{ opacity: 0.8 }}>
+              {isLogin 
+                ? "Sign in to continue your medical journey" 
+                : "Create your professional account to empower Africa's medical practitioners"
+              }
+            </Typography>
+          </Box>
 
-            {/* Professional Information Section - Only for Signup */}
-            {!isLogin && (
-              <>
-                <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
-                  Professional Information
-                </Typography>
+          {/* Alert */}
+          {alert.show && (
+            <Alert 
+              severity={alert.severity} 
+              sx={{ 
+                mb: 3,
+                borderRadius: 2,
+                backgroundColor: alert.severity === 'success' ? `${colors.gold}15` : undefined,
+                color: colors.darkTeal
+              }}
+            >
+              {alert.message}
+            </Alert>
+          )}
 
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <TextField
-                      label="Medical License Number"
-                      variant="outlined"
-                      fullWidth
-                      required
-                      value={form.medicalLicense}
-                      onChange={(e) => handleFormChange('medicalLicense', e.target.value)}
-                      error={!!errors.medicalLicense}
-                      helperText={errors.medicalLicense}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Badge sx={{ color: colors.gold }} />
-                          </InputAdornment>
-                        ),
-                      }}
-                      sx={inputStyles}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <TextField
-                      label="Specialization"
-                      variant="outlined"
-                      fullWidth
-                      required
-                      value={form.specialization}
-                      onChange={(e) => handleFormChange('specialization', e.target.value)}
-                      error={!!errors.specialization}
-                      helperText={errors.specialization}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Badge sx={{ color: colors.gold }} />
-                          </InputAdornment>
-                        ),
-                      }}
-                      sx={inputStyles}
-                    />
-                  </Grid>
-                </Grid>
-              </>
-            )}
-
-            {/* Password Fields */}
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={!isLogin ? 6 : 12}>
-                <TextField
-                  label="Password"
-                  type={showPassword ? 'text' : 'password'}
-                  variant="outlined"
-                  fullWidth
-                  required
-                  value={form.password}
-                  onChange={(e) => handleFormChange('password', e.target.value)}
-                  error={!!errors.password}
-                  helperText={errors.password}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Lock sx={{ color: colors.gold }} />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton onClick={handleTogglePassword}
-                          edge="end"
-                          sx={{ color: colors.darkTeal }}
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={inputStyles}
-                />
-              </Grid>
+          {/* Form */}
+          <form onSubmit={handleSubmit}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               
-              {/* Confirm Password - Only for Signup */}
+              {/* Personal Information Section - Only for Signup */}
               {!isLogin && (
-                <Grid item xs={12} md={6}>
+                <>
+                  <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
+                    Personal Information
+                  </Typography>
+                  
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        label="First Name"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={form.firstName}
+                        onChange={(e) => handleFormChange('firstName', e.target.value)}
+                        error={!!errors.firstName}
+                        helperText={errors.firstName}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <Person sx={{ color: colors.gold }} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        sx={inputStyles}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        label="Last Name"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={form.lastName}
+                        onChange={(e) => handleFormChange('lastName', e.target.value)}
+                        error={!!errors.lastName}
+                        helperText={errors.lastName}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <Person sx={{ color: colors.gold }} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        sx={inputStyles}
+                      />
+                    </Grid>
+                  </Grid>
+                </>
+              )}
+
+              {/* Email Field */}
+              <TextField
+                label="Email Address"
+                variant="outlined"
+                fullWidth
+                required
+                value={form.email}
+                onChange={(e) => handleFormChange('email', e.target.value)}
+                error={!!errors.email}
+                helperText={errors.email}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Email sx={{ color: colors.gold }} />
+                    </InputAdornment>
+                  ),
+                }}
+                sx={inputStyles}
+              />
+
+              {/* Professional Information Section - Only for Signup */}
+              {!isLogin && (
+                <>
+                  <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
+                    Professional Information
+                  </Typography>
+
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        label="Medical License Number"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={form.medicalLicense}
+                        onChange={(e) => handleFormChange('medicalLicense', e.target.value)}
+                        error={!!errors.medicalLicense}
+                        helperText={errors.medicalLicense}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <Badge sx={{ color: colors.gold }} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        sx={inputStyles}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <TextField
+                        label="Specialization"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        value={form.specialization}
+                        onChange={(e) => handleFormChange('specialization', e.target.value)}
+                        error={!!errors.specialization}
+                        helperText={errors.specialization}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">
+                              <Badge sx={{ color: colors.gold }} />
+                            </InputAdornment>
+                          ),
+                        }}
+                        sx={inputStyles}
+                      />
+                    </Grid>
+                  </Grid>
+                </>
+              )}
+
+              {/* Password Fields */}
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={!isLogin ? 6 : 12}>
                   <TextField
-                    label="Confirm Password"
-                    type={showConfirmPassword ? 'text' : 'password'}
+                    label="Password"
+                    type={showPassword ? 'text' : 'password'}
                     variant="outlined"
                     fullWidth
                     required
-                    value={form.confirmPassword}
-                    onChange={(e) => handleFormChange('confirmPassword', e.target.value)}
-                    error={!!errors.confirmPassword}
-                    helperText={errors.confirmPassword}
+                    value={form.password}
+                    onChange={(e) => handleFormChange('password', e.target.value)}
+                    error={!!errors.password}
+                    helperText={errors.password}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -437,12 +403,11 @@ const Auth = () => {
                       ),
                       endAdornment: (
                         <InputAdornment position="end">
-                          <IconButton
-                            onClick={handleToggleConfirmPassword}
+                          <IconButton onClick={handleTogglePassword}
                             edge="end"
                             sx={{ color: colors.darkTeal }}
                           >
-                            {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
                       ),
@@ -450,91 +415,127 @@ const Auth = () => {
                     sx={inputStyles}
                   />
                 </Grid>
-              )}
-            </Grid>
+                
+                {/* Confirm Password - Only for Signup */}
+                {!isLogin && (
+                  <Grid item xs={12} md={6}>
+                    <TextField
+                      label="Confirm Password"
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      variant="outlined"
+                      fullWidth
+                      required
+                      value={form.confirmPassword}
+                      onChange={(e) => handleFormChange('confirmPassword', e.target.value)}
+                      error={!!errors.confirmPassword}
+                      helperText={errors.confirmPassword}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Lock sx={{ color: colors.gold }} />
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleToggleConfirmPassword}
+                              edge="end"
+                              sx={{ color: colors.darkTeal }}
+                            >
+                              {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                      sx={inputStyles}
+                    />
+                  </Grid>
+                )}
+              </Grid>
 
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              size="large"
-              disabled={loading}
-              sx={{
-                py: 1.5,
-                borderRadius: 2,
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                textTransform: 'none',
-                mt: 2,
-                background: `linear-gradient(135deg, ${colors.orange} 0%, ${colors.gold} 100%)`,
-                '&:hover': {
-                  background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
-                  transform: 'translateY(-2px)',
-                  boxShadow: `0 8px 25px ${colors.orange}40`
-                },
-                '&:disabled': {
-                  background: colors.warmBeige,
-                },
-                transition: 'all 0.3s ease'
-              }}
-            >
-              {loading ? (
-                <CircularProgress size={24} sx={{ color: colors.white }} />
-              ) : isLogin ? (
-                "Sign In"
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                size="large"
+                disabled={loading}
+                sx={{
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                  mt: 2,
+                  background: `linear-gradient(135deg, ${colors.orange} 0%, ${colors.gold} 100%)`,
+                  '&:hover': {
+                    background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
+                    transform: 'translateY(-2px)',
+                    boxShadow: `0 8px 25px ${colors.orange}40`
+                  },
+                  '&:disabled': {
+                    background: colors.warmBeige,
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {loading ? (
+                  <CircularProgress size={24} sx={{ color: colors.white }} />
+                ) : isLogin ? (
+                  "Sign In"
+                ) : (
+                  "Create Professional Account"
+                )}
+              </Button>
+            </Box>
+          </form>
+
+          {/* Footer Links */}
+          <Box textAlign="center" mt={4}>
+            <Typography variant="body2" sx={{ color: colors.darkTeal, opacity: 0.8 }}>
+              {isLogin ? (
+                <>
+                  Don't have an account?{' '}
+                  <span 
+                    style={{ 
+                      color: colors.orange, 
+                      fontWeight: 'bold', 
+                      textDecoration: 'underline',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => navigate('/signup')}
+                  >
+                    Sign up here
+                  </span>
+                </>
               ) : (
-                "Create Professional Account"
+                <>
+                  Already have an account?{' '}
+                  <span 
+                    style={{ 
+                      color: colors.orange, 
+                      fontWeight: 'bold', 
+                      textDecoration: 'underline',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => navigate('/login')}
+                  >
+                    Sign in here
+                  </span>
+                </>
               )}
-            </Button>
+            </Typography>
           </Box>
-        </form>
 
-        {/* Footer Links */}
-        <Box textAlign="center" mt={4}>
-          <Typography variant="body2" sx={{ color: colors.darkTeal, opacity: 0.8 }}>
-            {isLogin ? (
-              <>
-                Don't have an account?{' '}
-                <span 
-                  style={{ 
-                    color: colors.orange, 
-                    fontWeight: 'bold', 
-                    textDecoration: 'underline',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => navigate('/signup')}
-                >
-                  Sign up here
-                </span>
-              </>
-            ) : (
-              <>
-                Already have an account?{' '}
-                <span 
-                  style={{ 
-                    color: colors.orange, 
-                    fontWeight: 'bold', 
-                    textDecoration: 'underline',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => navigate('/login')}
-                >
-                  Sign in here
-                </span>
-              </>
-            )}
-          </Typography>
-        </Box>
-
-        {/* Brand Footer */}
-        <Box textAlign="center" mt={4} pt={3} borderTop={`1px solid ${colors.lightGray}`}>
-          <Typography variant="caption" sx={{ color: colors.warmBeige, opacity: 0.7 }}>
-            Empowering Africa's Medical Practitioners
-          </Typography>
-        </Box>
-      </Paper>
-    </Container>
+          {/* Brand Footer */}
+          <Box textAlign="center" mt={4} pt={3} borderTop={`1px solid ${colors.lightGray}`}>
+            <Typography variant="caption" sx={{ color: colors.warmBeige, opacity: 0.7 }}>
+              Empowering Africa's Medical Practitioners
+            </Typography>
+          </Box>
+        </Paper>
+      </Container>
+    </section>
   );
 };
 
