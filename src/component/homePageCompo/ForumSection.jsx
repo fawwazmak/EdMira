@@ -35,9 +35,13 @@ const ForumSection = () => {
         boxShadow: "0 8px 30px rgba(217, 128, 33, 0.5)",
         },
     ];
-    const handleWhatsAppClick = () => {
-        window.open("https://wa.me/8032877945", "_blank");
+    const joinCommunity = () => {
+      window.open("https://chat.whatsapp.com/K0Kt4wnASEkEp41WQxFcOz?mode=ems_copy_t", "_blank");
     };
+
+    const joinMedicalUpdates = () => {
+      window.open("https://chat.whatsapp.com/FPhThBcZwmu0FSDsSldIYf?mode=ems_copy_t", "_blank");
+    }
 
   return (
     <Box sx={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", background: "linear-gradient(135deg, #082E39 0%, #0a3d4f 100%)",
@@ -129,7 +133,7 @@ const ForumSection = () => {
 
               <Button
                 variant="contained"
-                onClick={handleWhatsAppClick}
+                onClick={joinCommunity}
                 startIcon={<WhatsApp sx={{ fontSize: 28 }} />} // slightly larger icon
                 className="font-semibold text-xl md:px-12 px-2 md:py-5 py-2 rounded-full transition-all duration-300"
                 sx={{
@@ -199,7 +203,7 @@ const ForumSection = () => {
 
               <Button
                 variant="contained"
-                onClick={handleWhatsAppClick}
+                onClick={joinMedicalUpdates}
                 startIcon={<WhatsApp sx={{ fontSize: 28 }} />} // slightly larger icon
                 className="font-semibold text-xl md:px-12 px-4 md:py-5 py-3 rounded-full transition-all duration-300"
                 sx={{
