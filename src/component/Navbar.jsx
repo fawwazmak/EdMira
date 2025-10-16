@@ -40,7 +40,7 @@ const Navbar = () => {
         {/* Logo */}
         <HashLink to="/#home" >
           <motion.img
-            src="/Logo1.jpg"
+            src="/Logo1.png"
             alt="EdMira Logo"
             className="h-14 w-14 object-cover rounded-full cursor-pointer"
             whileHover={{ scale: 1.05 }}
