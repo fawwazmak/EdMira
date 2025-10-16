@@ -20,7 +20,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
-            className="text-4xl md:text-6xl font-bold leading-tight text-[#082E39]"
+            className="sm:text-3xl text-xl md:text-6xl font-bold leading-tight text-[#082E39]"
         >
             Empowering <span className="text-[#CBA244]">Africa’s Future Medical Practitioners</span>
         </motion.h1>
