@@ -18,17 +18,28 @@ const Footer = () => {
       return;
     }
 
-    // Submit to Formspree using their handleSubmit
-    await handleSubmit(e);
-    
-    // If submission was successful, clear the input and update local storage
-    if (state.succeeded) {
-      existingEmails.push(email);
-      localStorage.setItem("subscribedEmails", JSON.stringify(existingEmails));
-      alert("Thanks for subscribing!");
-      setEmail(''); // Clear the input field
+    try {
+      // Submit to Formspree
+      await handleSubmit(e);
+      
+      // If submission was successful, clear the input and update local storage
+      if (state.succeeded) {
+        existingEmails.push(email);
+        localStorage.setItem("subscribedEmails", JSON.stringify(existingEmails));
+        alert("Thanks for subscribing!");
+        setEmail(''); // Clear the input field
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
     }
   };
+
+  // Reset email when submission succeeds
+  React.useEffect(() => {
+    if (state.succeeded) {
+      setEmail('');
+    }
+  }, [state.succeeded]);
 
   return (
     <footer className="bg-[#082E39] text-[#FDFDFD] py-12 px-6 md:px-16">
