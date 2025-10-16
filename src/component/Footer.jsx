@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, ValidationError } from '@formspree/react';
 import { RiWhatsappLine, RiLinkedinFill, RiTwitterXLine, RiInstagramLine } from "react-icons/ri";
-import { FaFacebookF, FaArrowRight, FaSpinner } from "react-icons/fa";
+import { FaFacebookF, FaArrowRight, FaSpinner, FaCheckCircle } from "react-icons/fa";
 
 const Footer = () => {
   const [state, handleSubmit] = useForm("xnnglgvv");
   const [email, setEmail] = useState('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -26,8 +27,8 @@ const Footer = () => {
       if (state.succeeded) {
         existingEmails.push(email);
         localStorage.setItem("subscribedEmails", JSON.stringify(existingEmails));
-        alert("Thanks for subscribing!");
         setEmail(''); // Clear the input field
+        setShowSuccessModal(true); // Show success modal
       }
     } catch (error) {
       console.error('Subscription error:', error);
@@ -40,6 +41,16 @@ const Footer = () => {
       setEmail('');
     }
   }, [state.succeeded]);
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+  };
+
+  const handleBackgroundClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeSuccessModal();
+    }
+  };
 
   return (
     <footer className="bg-[#082E39] text-[#FDFDFD] py-12 px-6 md:px-16">
@@ -131,13 +142,6 @@ const Footer = () => {
                 )}
               </button>
             </form>
-            
-            {/* Success Message */}
-            {state.succeeded && (
-              <p className="text-green-400 text-sm mt-2 text-center md:text-left">
-                Thank you for subscribing!
-              </p>
-            )}
           </div>
 
           {/* Social Icons */}
@@ -176,6 +180,88 @@ const Footer = () => {
         &copy; {new Date().getFullYear()}{" "}
         <span className="text-[#CBA244] font-semibold">EdMira</span>. All rights reserved.
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={handleBackgroundClick}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto transform transition-all">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-[#082E39] to-[#CBA244] rounded-t-2xl p-6 text-white">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold">Subscription Successful!</h2>
+                <button
+                  onClick={closeSuccessModal}
+                  className="text-white hover:text-gray-200 transition-colors text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="p-6">
+              <div className="flex items-center justify-center mb-4">
+                <div className="bg-green-100 rounded-full p-4">
+                  <FaCheckCircle className="w-12 h-12 text-green-600" />
+                </div>
+              </div>
+              
+              <div className="space-y-4 text-center">
+                <p className="text-gray-700 text-lg font-medium">
+                  Welcome to the EdMira Community! 🎉
+                </p>
+                
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Thank you for subscribing! You'll now receive curated updates from EdMira's mission to empower Africa's Future Medical Practitioners.
+                </p>
+
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-4">
+                  <p className="text-green-800 text-sm font-medium">
+                    What to expect:
+                  </p>
+                  <ul className="text-green-700 text-sm mt-2 space-y-1 text-left">
+                    <li>• Latest medical insights and updates</li>
+                    <li>• Platform development progress</li>
+                    <li>• Exclusive early access opportunities</li>
+                    <li>• Community announcements</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="border-t border-gray-200 p-6">
+              <div className="flex flex-col space-y-3">
+                <button
+                  onClick={closeSuccessModal}
+                  className="bg-gradient-to-r from-[#D98021] to-[#CBA244] text-white font-semibold py-3 px-6 rounded-full hover:shadow-lg transition-all transform hover:scale-105"
+                >
+                  Continue Exploring
+                </button>
+                
+                <button
+                  onClick={() => {
+                    closeSuccessModal();
+                    // Scroll to social media section
+                    setTimeout(() => {
+                      const socialSection = document.querySelector('footer');
+                      if (socialSection) {
+                        socialSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 100);
+                  }}
+                  className="border border-[#CBA244] text-[#CBA244] font-semibold py-3 px-6 rounded-full hover:bg-[#CBA244] hover:text-white transition-all"
+                >
+                  Follow Us on Social Media
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
