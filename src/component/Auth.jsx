@@ -36,20 +36,18 @@ const Auth = () => {
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [alert, setAlert] = React.useState({ show: false, message: '', severity: 'error' });
 
-  // EdMira Brand Colors
+  // New EdMira Brand Colors
   const colors = {
-    darkTeal: '#082E39',
-    gold: '#CBA244',
-    orange: '#D98021',
-    warmBeige: '#C7BC9A',
-    lightGray: '#F0F0EF',
-    white: '#FDFDFD'
+    primaryBlue: '#00084A',
+    lightBlue: '#3DBEFF',
+    accentGreen: '#3EE6A5',
+    white: '#FFFFFF',
+    lightGray: '#F5F5F5'
   };
 
   const validateForm = () => {
     const newErrors = {};
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email) {
       newErrors.email = 'Email is required';
@@ -57,7 +55,6 @@ const Auth = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    // Password validation
     if (!form.password) {
       newErrors.password = 'Password is required';
     } else if (form.password.length < 6) {
@@ -65,28 +62,17 @@ const Auth = () => {
     }
 
     if (!isLogin) {
-      // Name validation for signup
-      if (!form.firstName.trim()) {
-        newErrors.firstName = 'First name is required';
-      }
-      if (!form.lastName.trim()) {
-        newErrors.lastName = 'Last name is required';
-      }
+      if (!form.firstName.trim()) newErrors.firstName = 'First name is required';
+      if (!form.lastName.trim()) newErrors.lastName = 'Last name is required';
 
-      // Confirm password validation
       if (!form.confirmPassword) {
         newErrors.confirmPassword = 'Please confirm your password';
       } else if (form.password !== form.confirmPassword) {
         newErrors.confirmPassword = 'Passwords do not match';
       }
 
-      // Professional validation for signup
-      if (!form.medicalLicense.trim()) {
-        newErrors.medicalLicense = 'Medical license number is required';
-      }
-      if (!form.specialization.trim()) {
-        newErrors.specialization = 'Specialization is required';
-      }
+      if (!form.medicalLicense.trim()) newErrors.medicalLicense = 'Medical license number is required';
+      if (!form.specialization.trim()) newErrors.specialization = 'Specialization is required';
     }
 
     setErrors(newErrors);
@@ -95,23 +81,15 @@ const Auth = () => {
 
   const handleSubmit = async (e) => { 
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
     setAlert({ show: false, message: '', severity: 'error' });
 
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      if (isLogin) {
-        handleLogin();
-      } else {
-        handleSignUp();
-      }
+      if (isLogin) handleLogin();
+      else handleSignUp();
     } catch (error) {
       setAlert({
         show: true,
@@ -129,10 +107,7 @@ const Auth = () => {
       message: 'Successfully logged in! Redirecting...',
       severity: 'success'
     });
-    
-    setTimeout(() => {
-      navigate('/');
-    }, 1000);
+    setTimeout(() => navigate('/'), 1000);
   };
 
   const handleSignUp = () => {
@@ -141,8 +116,6 @@ const Auth = () => {
       message: 'Account created successfully! Welcome to EdMira community.',
       severity: 'success'
     });
-    
-    // Reset form after successful signup
     setForm({ 
       firstName: '',
       lastName: '',
@@ -152,46 +125,34 @@ const Auth = () => {
       medicalLicense: '',
       specialization: ''
     });
-
-    // Redirect to login after delay
-    setTimeout(() => {
-      navigate('/login');
-    }, 2000);
+    setTimeout(() => navigate('/login'), 2000);
   };
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleToggleConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
+  const handleTogglePassword = () => setShowPassword(!showPassword);
+  const handleToggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   const handleFormChange = (field, value) => {
     setForm(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
+    if (errors[field]) setErrors(prev => ({ ...prev, [field]: '' }));
   };
 
   const inputStyles = {
     '& .MuiOutlinedInput-root': {
       borderRadius: 2,
       '&:hover fieldset': {
-        borderColor: colors.gold,
+        borderColor: colors.accentGreen,
       },
       '&.Mui-focused fieldset': {
-        borderColor: colors.orange,
+        borderColor: colors.lightBlue,
       },
     },
     '& .MuiInputLabel-root.Mui-focused': {
-      color: colors.orange,
+      color: colors.lightBlue,
     }
   };
 
   return (
-    <section style={{ background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.darkTeal}E6 100%)`}}>
+    <section style={{ background: `linear-gradient(135deg, ${colors.primaryBlue} 0%, ${colors.lightBlue}E6 100%)` }}>
       <Container 
         component="main" 
         maxWidth={isLogin ? "sm" : "md"}
@@ -210,8 +171,8 @@ const Auth = () => {
             borderRadius: 4,
             width: '100%',
             background: colors.white,
-            border: `2px solid ${colors.gold}20`,
-            boxShadow: `0 20px 40px ${colors.darkTeal}40`
+            border: `2px solid ${colors.accentGreen}20`,
+            boxShadow: `0 20px 40px ${colors.primaryBlue}40`
           }}
         >
           {/* Header */}
@@ -223,7 +184,7 @@ const Auth = () => {
               gutterBottom
               sx={{ 
                 fontSize: { xs: '1.75rem', md: '2.125rem' },
-                background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
+                background: `linear-gradient(135deg, ${colors.primaryBlue} 0%, ${colors.lightBlue} 100%)`,
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
@@ -231,7 +192,7 @@ const Auth = () => {
             >
               {isLogin ? "Welcome Back to EdMira" : "Join EdMira Community"}
             </Typography>
-            <Typography variant="body1" color={colors.darkTeal} sx={{ opacity: 0.8 }}>
+            <Typography variant="body1" color={colors.primaryBlue} sx={{ opacity: 0.8 }}>
               {isLogin 
                 ? "Sign in to continue your medical journey" 
                 : "Create your professional account to empower Africa's medical practitioners"
@@ -239,15 +200,14 @@ const Auth = () => {
             </Typography>
           </Box>
 
-          {/* Alert */}
           {alert.show && (
             <Alert 
               severity={alert.severity} 
               sx={{ 
                 mb: 3,
                 borderRadius: 2,
-                backgroundColor: alert.severity === 'success' ? `${colors.gold}15` : undefined,
-                color: colors.darkTeal
+                backgroundColor: alert.severity === 'success' ? `${colors.accentGreen}15` : undefined,
+                color: colors.primaryBlue
               }}
             >
               {alert.message}
@@ -258,10 +218,9 @@ const Auth = () => {
           <form onSubmit={handleSubmit}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               
-              {/* Personal Information Section - Only for Signup */}
               {!isLogin && (
                 <>
-                  <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
+                  <Typography variant="h6" color={colors.primaryBlue} sx={{ borderBottom: `2px solid ${colors.accentGreen}`, pb: 1 }}>
                     Personal Information
                   </Typography>
                   
@@ -279,7 +238,7 @@ const Auth = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <Person sx={{ color: colors.gold }} />
+                              <Person sx={{ color: colors.accentGreen }} />
                             </InputAdornment>
                           ),
                         }}
@@ -299,7 +258,7 @@ const Auth = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <Person sx={{ color: colors.gold }} />
+                              <Person sx={{ color: colors.accentGreen }} />
                             </InputAdornment>
                           ),
                         }}
@@ -310,7 +269,6 @@ const Auth = () => {
                 </>
               )}
 
-              {/* Email Field */}
               <TextField
                 label="Email Address"
                 variant="outlined"
@@ -323,17 +281,16 @@ const Auth = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Email sx={{ color: colors.gold }} />
+                      <Email sx={{ color: colors.accentGreen }} />
                     </InputAdornment>
                   ),
                 }}
                 sx={inputStyles}
               />
 
-              {/* Professional Information Section - Only for Signup */}
               {!isLogin && (
                 <>
-                  <Typography variant="h6" color={colors.darkTeal} sx={{ borderBottom: `2px solid ${colors.gold}`, pb: 1 }}>
+                  <Typography variant="h6" color={colors.primaryBlue} sx={{ borderBottom: `2px solid ${colors.accentGreen}`, pb: 1 }}>
                     Professional Information
                   </Typography>
 
@@ -351,7 +308,7 @@ const Auth = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <Badge sx={{ color: colors.gold }} />
+                              <Badge sx={{ color: colors.accentGreen }} />
                             </InputAdornment>
                           ),
                         }}
@@ -371,7 +328,7 @@ const Auth = () => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <Badge sx={{ color: colors.gold }} />
+                              <Badge sx={{ color: colors.accentGreen }} />
                             </InputAdornment>
                           ),
                         }}
@@ -382,7 +339,6 @@ const Auth = () => {
                 </>
               )}
 
-              {/* Password Fields */}
               <Grid container spacing={3}>
                 <Grid item xs={12} md={!isLogin ? 6 : 12}>
                   <TextField
@@ -398,15 +354,12 @@ const Auth = () => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <Lock sx={{ color: colors.gold }} />
+                          <Lock sx={{ color: colors.accentGreen }} />
                         </InputAdornment>
                       ),
                       endAdornment: (
                         <InputAdornment position="end">
-                          <IconButton onClick={handleTogglePassword}
-                            edge="end"
-                            sx={{ color: colors.darkTeal }}
-                          >
+                          <IconButton onClick={handleTogglePassword} edge="end" sx={{ color: colors.primaryBlue }}>
                             {showPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
@@ -416,7 +369,6 @@ const Auth = () => {
                   />
                 </Grid>
                 
-                {/* Confirm Password - Only for Signup */}
                 {!isLogin && (
                   <Grid item xs={12} md={6}>
                     <TextField
@@ -432,7 +384,7 @@ const Auth = () => {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
-                            <Lock sx={{ color: colors.gold }} />
+                            <Lock sx={{ color: colors.accentGreen }} />
                           </InputAdornment>
                         ),
                         endAdornment: (
@@ -440,7 +392,7 @@ const Auth = () => {
                             <IconButton
                               onClick={handleToggleConfirmPassword}
                               edge="end"
-                              sx={{ color: colors.darkTeal }}
+                              sx={{ color: colors.primaryBlue }}
                             >
                               {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
@@ -453,7 +405,6 @@ const Auth = () => {
                 )}
               </Grid>
 
-              {/* Submit Button */}
               <Button
                 type="submit"
                 fullWidth
@@ -467,14 +418,14 @@ const Auth = () => {
                   fontWeight: 'bold',
                   textTransform: 'none',
                   mt: 2,
-                  background: `linear-gradient(135deg, ${colors.orange} 0%, ${colors.gold} 100%)`,
+                  background: `linear-gradient(135deg, ${colors.lightBlue} 0%, ${colors.accentGreen} 100%)`,
                   '&:hover': {
-                    background: `linear-gradient(135deg, ${colors.darkTeal} 0%, ${colors.orange} 100%)`,
+                    background: `linear-gradient(135deg, ${colors.primaryBlue} 0%, ${colors.lightBlue} 100%)`,
                     transform: 'translateY(-2px)',
-                    boxShadow: `0 8px 25px ${colors.orange}40`
+                    boxShadow: `0 8px 25px ${colors.lightBlue}40`
                   },
                   '&:disabled': {
-                    background: colors.warmBeige,
+                    background: colors.lightGray,
                   },
                   transition: 'all 0.3s ease'
                 }}
@@ -490,15 +441,14 @@ const Auth = () => {
             </Box>
           </form>
 
-          {/* Footer Links */}
           <Box textAlign="center" mt={4}>
-            <Typography variant="body2" sx={{ color: colors.darkTeal, opacity: 0.8 }}>
+            <Typography variant="body2" sx={{ color: colors.primaryBlue, opacity: 0.8 }}>
               {isLogin ? (
                 <>
                   Don't have an account?{' '}
                   <span 
                     style={{ 
-                      color: colors.orange, 
+                      color: colors.lightBlue, 
                       fontWeight: 'bold', 
                       textDecoration: 'underline',
                       cursor: 'pointer'
@@ -513,7 +463,7 @@ const Auth = () => {
                   Already have an account?{' '}
                   <span 
                     style={{ 
-                      color: colors.orange, 
+                      color: colors.lightBlue, 
                       fontWeight: 'bold', 
                       textDecoration: 'underline',
                       cursor: 'pointer'
@@ -527,9 +477,8 @@ const Auth = () => {
             </Typography>
           </Box>
 
-          {/* Brand Footer */}
           <Box textAlign="center" mt={4} pt={3} borderTop={`1px solid ${colors.lightGray}`}>
-            <Typography variant="caption" sx={{ color: colors.warmBeige, opacity: 0.7 }}>
+            <Typography variant="caption" sx={{ color: colors.accentGreen, opacity: 0.8 }}>
               Empowering Africa's Medical Practitioners
             </Typography>
           </Box>
