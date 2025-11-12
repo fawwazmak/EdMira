@@ -17,21 +17,21 @@ const ForumSection = () => {
       {
       name: "Jamiu Sanni",
       title: "Founder, EdMira",
-      color: "#CBA244",
+      color: "#3DBEFF",
       bgGradient:
           "linear-gradient(145deg, rgba(203, 162, 68, 0.15) 0%, rgba(217, 128, 33, 0.1) 100%)",
       border: "2px solid rgba(203, 162, 68, 0.3)",
-      avatarBg: "linear-gradient(135deg, #CBA244 0%, #D98021 100%)",
+      avatarBg: "linear-gradient(135deg, #CBA244 0%, #3DBEFF 100%)",
       boxShadow: "0 8px 30px rgba(203, 162, 68, 0.5)",
       },
       {
       name: "Rasheedah Dada",
       title: "Co-Founder, EdMira",
-      color: "#D98021",
+      color: "#3DBEFF",
       bgGradient:
           "linear-gradient(145deg, rgba(217, 128, 33, 0.15) 0%, rgba(203, 162, 68, 0.1) 100%)",
       border: "2px solid rgba(217, 128, 33, 0.3)",
-      avatarBg: "linear-gradient(135deg, #D98021 0%, #CBA244 100%)",
+      avatarBg: "linear-gradient(135deg, #3DBEFF 0%, #CBA244 100%)",
       boxShadow: "0 8px 30px rgba(217, 128, 33, 0.5)",
       },
   ];
@@ -54,7 +54,7 @@ const ForumSection = () => {
             fontWeight="bold"
             gutterBottom
             sx={{
-              background: "linear-gradient(135deg, #CBA244 0%, #D98021 100%)",
+              background: "linear-gradient(135deg, #CBA244 0%, #3DBEFF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -115,7 +115,7 @@ const ForumSection = () => {
                   fontWeight="bold"
                   mb={3}
                   sx={{ 
-                    color: "#CBA244", 
+                    color: "#3DBEFF", 
                     fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" }
                   }}
                   className="md:text-start text-center"
@@ -138,7 +138,7 @@ const ForumSection = () => {
                   startIcon={<WhatsApp sx={{ fontSize: 28 }} />} // slightly larger icon
                   className="font-semibold text-xl md:px-12 px-2 md:py-5 py-2 rounded-full transition-all duration-300"
                   sx={{
-                    background: "linear-gradient(135deg, #D98021 0%, #CBA244 100%)",
+                    background: "linear-gradient(135deg, #3DBEFF 0%, #CBA244 100%)",
                     color: "#082E39",
                     borderRadius: "9999px", // ensures fully rounded sides
                     padding: "1.25rem 3rem", // larger button
@@ -148,8 +148,8 @@ const ForumSection = () => {
                     textTransform: "none", // keeps text as-is (not all caps)
                     "&:hover": {
                       transform: "scale(1.07)",
-                      boxShadow: "0 8px 35px rgba(217, 128, 33, 0.6)",
-                      background: "linear-gradient(135deg, #CBA244 0%, #D98021 100%)",
+                      boxShadow: "0 8px 35px rgba(62, 230, 165, 0.5)",
+                      background: "linear-gradient(135deg, #CBA244 0%, #3DBEFF 100%)",
                     },
                     "& .MuiButton-startIcon": {
                       marginRight: "0.75rem",
@@ -189,7 +189,7 @@ const ForumSection = () => {
                   fontWeight="bold"
                   mb={3}
                   sx={{ 
-                    color: "#D98021",
+                    color: "#3DBEFF",
                     fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" }
                   }}
                   className="md:text-start text-center"
@@ -208,7 +208,7 @@ const ForumSection = () => {
                   startIcon={<WhatsApp sx={{ fontSize: 28 }} />} // slightly larger icon
                   className="font-semibold text-xl md:px-12 px-4 md:py-5 py-3 rounded-full transition-all duration-300"
                   sx={{
-                    background: "linear-gradient(135deg, #D98021 0%, #CBA244 100%)",
+                    background: "linear-gradient(135deg, #3DBEFF 0%, #CBA244 100%)",
                     color: "#082E39",
                     borderRadius: "9999px", // ensures fully rounded sides
                     padding: "1.25rem 3rem", // larger button
@@ -218,8 +218,8 @@ const ForumSection = () => {
                     textTransform: "none", // keeps text as-is (not all caps)
                     "&:hover": {
                       transform: "scale(1.07)",
-                      boxShadow: "0 8px 35px rgba(217, 128, 33, 0.6)",
-                      background: "linear-gradient(135deg, #CBA244 0%, #D98021 100%)",
+                      boxShadow: "0 8px 35px rgba(62, 230, 165, 0.5)",
+                      background: "linear-gradient(135deg, #CBA244 0%, #3DBEFF 100%)",
                     },
                     "& .MuiButton-startIcon": {
                       marginRight: "0.75rem",
@@ -240,7 +240,7 @@ const ForumSection = () => {
             fontWeight="bold"
             gutterBottom
             sx={{
-              background: "linear-gradient(135deg, #CBA244 0%, #D98021 100%)",
+              background: "linear-gradient(135deg, #CBA244 0%, #3DBEFF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",

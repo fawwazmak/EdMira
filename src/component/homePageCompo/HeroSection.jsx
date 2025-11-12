@@ -27,7 +27,7 @@ const HeroSection = () => {
                     transition={{ duration: 1.2 }}
                     className="sm:text-3xl text-xl md:text-6xl font-bold leading-tight text-[#082E39]"
                 >
-                    Empowering <span className="text-[#CBA244]">Africa's Future Medical Practitioners</span>
+                    Empowering <span className="text-[#3DBEFF]">Africa's Future Medical Practitioners</span>
                 </motion.h1>
 
                 <motion.p
@@ -56,9 +56,9 @@ const HeroSection = () => {
                             fontSize: "1rem",
                             textTransform: "none",
                             borderRadius: "2rem",
-                            backgroundColor: "#D98021",
+                            backgroundColor: "#3DBEFF",
                             color: "#FDFDFD",
-                            "&:hover": { backgroundColor: "#CBA244" },
+                            "&:hover": { backgroundColor: "#3EE6A5" },
                             boxShadow: "0 6px 16px rgba(8, 46, 57, 0.25)",
                             }}
                         >
@@ -82,9 +82,9 @@ const HeroSection = () => {
                             textTransform: "none",
                             borderRadius: "2rem",
                             color: "#082E39",
-                            borderColor: "#CBA244",
+                            borderColor: "#3DBEFF",
                             "&:hover": {
-                                backgroundColor: "#CBA244",
+                                backgroundColor: "#3DBEFF",
                                 color: "#FDFDFD",
                             },
                             }}
@@ -114,7 +114,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Decorative Glow Elements */}
-            <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#CBA244] opacity-20 blur-3xl rounded-full"></div>
+            <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#3DBEFF] opacity-20 blur-3xl rounded-full"></div>
             <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#082E39] opacity-25 blur-3xl rounded-full"></div>
         </section>
 
