@@ -135,11 +135,11 @@ const Footer = () => {
               Follow Us
             </h3>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 text-2xl mt-4">
-              <RiWhatsappLine className="hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700" onClick={() => window.open("https://wa.me/+2348032877945", "_blank")} />
-              <RiLinkedinFill className="hover:text-[#0077B5] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700" onClick={() => window.open("https://www.linkedin.com/in/edmiragroup", "_blank")} />
-              <RiTwitterXLine className="hover:text-gray-300 transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700" onClick={() => window.open("https://x.com/edmira_group", "_blank")} />
-              <RiInstagramLine className="hover:text-[#E4405F] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700" onClick={() => window.open("https://www.instagram.com/edmira_group", "_blank")} />
-              <FaFacebookF className="hover:text-[#1877F2] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700" onClick={() => window.open("https://web.facebook.com/profile.php?id=61581985767152", "_blank")} />
+              <RiWhatsappLine className="hover:text-[#25D366] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700 border-2" onClick={() => window.open("https://wa.me/+2348032877945", "_blank")} />
+              <RiLinkedinFill className="hover:text-[#0077B5] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700 border-2" onClick={() => window.open("https://www.linkedin.com/in/edmiragroup", "_blank")} />
+              <RiTwitterXLine className="hover:text-gray-900 transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700 border-2" onClick={() => window.open("https://x.com/edmira_group", "_blank")} />
+              <RiInstagramLine className="hover:text-[#E4405F] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700 border-2" onClick={() => window.open("https://www.instagram.com/edmira_group", "_blank")} />
+              <FaFacebookF className="hover:text-[#1877F2] transition-transform transform hover:scale-110 cursor-pointer p-3 text-5xl rounded-full bg-[#3DBEFF] hover:-translate-y-2 duration-700 border-2" onClick={() => window.open("https://web.facebook.com/profile.php?id=61581985767152", "_blank")} />
             </div>
           </div>
         </section>
